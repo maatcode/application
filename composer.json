@@ -13,5 +13,8 @@
     "psr-4": {
       "Maatcode\\Application\\": "src"
     }
+  },
+  "require": {
+    "league/container": "^4.2"
   }
 }
