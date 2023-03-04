@@ -1,85 +1,99 @@
 <?php
+declare(strict_types=1);
 
 namespace Maatcode\Application\Http;
 
 use Maatcode\Application\Module\AbstractClass;
 
-class Request extends AbstractClass
+class Request extends AbstractClass implements RequestInterface
 {
-    protected $module;
-    protected $controller;
-    protected $action;
-    protected $params;
+    /**
+     * @var string
+     */
+    protected string $module;
+    /**
+     * @var string
+     */
+    protected string $controller;
+    /**
+     * @var string
+     */
+    protected string $action;
+    /**
+     * @var array
+     */
+    protected array $params;
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getModule()
+    public function getModule(): string
     {
         return $this->module;
     }
 
     /**
-     * @param mixed $module
+     * @param string $module
+     * @return Request
      */
-    public function setModule($module): void
+    public function setModule(string $module): Request
     {
         $this->module = $module;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getController()
+    public function getController(): string
     {
         return $this->controller;
     }
 
     /**
-     * @param mixed $controller
+     * @param string $controller
+     * @return Request
      */
-    public function setController($controller): void
+    public function setController(string $controller): Request
     {
         $this->controller = $controller;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getAction()
+    public function getAction(): string
     {
         return $this->action;
     }
 
     /**
-     * @param mixed $action
+     * @param string $action
+     * @return Request
      */
-    public function setAction($action): void
+    public function setAction(string $action): Request
     {
         $this->action = $action;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getParams()
+    public function getParams(): array
     {
         return $this->params;
     }
 
     /**
-     * @param mixed $params
+     * @param array $params
+     * @return Request
      */
-    public function setParams($params): void
+    public function setParams(array $params): Request
     {
         $this->params = $params;
+        return $this;
     }
-
-    public function getParam($param)
-    {
-        return $this->params[$param] ?? null;
-    }
-
-
 
 }
