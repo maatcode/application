@@ -1,12 +1,12 @@
 {
   "name": "maatcode/maatcode-application",
-  "description": "description",
+  "description": "Maatcode Application",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     {
       "name": "casper",
-      "email": "email@example.com"
+      "email": "maatcode@gmail.com"
     }
   ],
   "autoload": {
