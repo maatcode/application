@@ -21,6 +21,8 @@ abstract class AbstractModule
      */
     protected Container $container;
 
+    protected array $config = [];
+
     /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
@@ -60,12 +62,34 @@ abstract class AbstractModule
     /**
      * @return void
      */
-    abstract public function initServices(): void;
+    protected function initServices(): void
+    {
+        $config = $this->getConfig();
+        // Add controller factories
+        $controllerFactories = $config['controllers']['factories'] ?? [];
+        foreach ($controllerFactories as $controller => $factory) {
+            $this->container->add($controller, (new $factory)($this->container));
+        }
+        // Add service factories
+        $serviceFactories = $config['services']['factories'] ?? [];
+        foreach ($serviceFactories as $service => $factory) {
+            $this->container->add($service, (new $factory)($this->container));
+        }
+    }
 
-    /**
-     * @return mixed
-     */
-    abstract public function getConfig(): mixed;
+    protected function getConfig(): array
+    {
+        return $this->config;
+    }
+
+    protected function setConfig(array $config): AbstractModule
+    {
+        $this->config = $config;
+        return $this;
+    }
+
+
+
 
 
 }
