@@ -7,5 +7,5 @@ use League\Container\Container;
 
 interface FactoryInterface
 {
-    public static function create(Container $container);
+    public function __invoke(Container $container);
 }
