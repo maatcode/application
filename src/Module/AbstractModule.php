@@ -65,15 +65,15 @@ abstract class AbstractModule
     protected function initServices(): void
     {
         $config = $this->getConfig();
-        // Add controller factories
-        $controllerFactories = $config['controllers']['factories'] ?? [];
-        foreach ($controllerFactories as $controller => $factory) {
-            $this->container->add($controller, (new $factory)($this->container));
-        }
         // Add service factories
         $serviceFactories = $config['services']['factories'] ?? [];
         foreach ($serviceFactories as $service => $factory) {
             $this->container->add($service, (new $factory)($this->container));
+        }
+        // Add controller factories
+        $controllerFactories = $config['controllers']['factories'] ?? [];
+        foreach ($controllerFactories as $controller => $factory) {
+            $this->container->add($controller, (new $factory)($this->container));
         }
     }
 
