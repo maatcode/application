@@ -28,9 +28,6 @@ interface ModuleInterface
      */
     public function getRouting();
 
-    /**
-     * @return mixed
-     */
-    public function initServices();
+    
 
 }
